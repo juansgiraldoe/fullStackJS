@@ -24,9 +24,32 @@ const registrar = async(req, res) => {
 
 const perfil = (req, res) => {
   res.json({ msg: `Mostrando perfil.` });
-}
+};
+
+const confirmar = async (req, res) => {
+
+  const { token } = req.params;
+  const usuarioConfirmar = await Veterinario.findOne({token});
+  if (!usuarioConfirmar) {
+    const error = new Error('Token no valido');
+    res.status(404).json({msg: error.message})
+  };
+  console.log(usuarioConfirmar);
+  
+  try {
+    usuarioConfirmar.token = null;
+    usuarioConfirmar.confirmado = true;
+    usuarioConfirmar.save();
+
+    res.json({msg: `Usuario confirmado correctamente.`})
+  } catch (error) {
+    console.log(error);
+  };
+
+};
 
 export {
   registrar,
-  perfil
+  perfil,
+  confirmar
 };
