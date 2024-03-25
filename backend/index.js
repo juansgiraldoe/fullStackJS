@@ -6,6 +6,8 @@ import vetRoutes from "./routes/vetRoutes.js"
 //--------------------------------
 
 const app = express();
+app.use(express.json());
+
 dotenv.config();
 conectDb();
 

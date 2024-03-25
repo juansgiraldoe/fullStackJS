@@ -4,7 +4,7 @@ import { registrar, perfil } from '../controllers/vetController.js';
 
 const router = express.Router();
 
-router.get(`/`, registrar);
+router.post(`/`, registrar);
 router.get(`/perfil`, perfil);
 
 
