@@ -1,12 +1,13 @@
 import express from 'express';
-import { registrar, perfil, confirmar } from '../controllers/vetController.js';
+import { registrar, perfil, confirmar, autenticar } from '../controllers/vetController.js';
 
 
 const router = express.Router();
 
 router.post(`/`, registrar);
 router.get(`/perfil`, perfil);
-router.get('/confirmar/:token', confirmar)
+router.get('/confirmar/:token', confirmar);
+router.post('/login', autenticar)
 
 
 
