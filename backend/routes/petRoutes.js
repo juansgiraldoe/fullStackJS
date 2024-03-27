@@ -1,13 +1,17 @@
 import express from "express";
-import { agregarPaciente, obtenerPaciente } from "../controllers/petController.js";
+import { agregarPaciente, obtenerPacientes, obtenerPaciente, actualizarPaciente, eliminarPaciente } from "../controllers/petController.js";
 import checkAuth from "../middleware/auth.js";
 
 const router = express.Router();
 
 router.route('/')
   .post(checkAuth,agregarPaciente)
-  .get(checkAuth, obtenerPaciente);
+  .get(checkAuth, obtenerPacientes);
 
+router.route('/:id')
+  .get(checkAuth, obtenerPaciente)
+  .put(checkAuth, actualizarPaciente)
+  .delete(checkAuth, eliminarPaciente)
 
 
 
