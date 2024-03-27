@@ -1,8 +1,8 @@
 function App() {
 
   return (
-    <h1>Administrador de Veterinaria</h1>
+    <h1 className="font-bold text-2xl">Administrador de Veterinaria</h1>
   )
-}
+};
 
 export default App
