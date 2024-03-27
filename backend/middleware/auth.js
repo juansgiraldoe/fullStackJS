@@ -19,7 +19,7 @@ const checkAuth = async ( req, res, next ) => {
   if (!token) {
     const e = new Error('Token vacio');
     return res.status(403).json({msg: e.message});
-  }
+  };
 };
 
 export default checkAuth;
