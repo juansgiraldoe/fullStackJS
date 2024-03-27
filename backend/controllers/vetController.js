@@ -24,9 +24,11 @@ const registrar = async(req, res) => {
 };
 
 const perfil = (req, res) => {
-  res.json({ msg: `Mostrando perfil.` });
+  const { veterinario } = req;
+  res.json({ perfil: veterinario});
 };
 
+/*Confirmar cuenta.*/
 const confirmar = async (req, res) => {
 
   //Confirmar usuario por token.
@@ -48,7 +50,7 @@ const confirmar = async (req, res) => {
     console.log(error);
   };
 };
-
+/*Autenticar usuario.*/
 const autenticar = async (req, res) => {
   const { email, password } = req.body;
 
