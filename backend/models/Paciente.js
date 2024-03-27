@@ -15,7 +15,8 @@ const pacientesSchema = mongoose.Schema({
     },
     fecha: {
       type: Date,
-      required: true
+      required: true,
+      default: Date.now()
     },
     sintomas: {
       type: String,
@@ -27,7 +28,7 @@ const pacientesSchema = mongoose.Schema({
     },
   }, 
   {
-    timestampos: true,
+    timestamps: true,
   },
 );
 

@@ -1,0 +1,25 @@
+import Paciente from "../models/Paciente.js";
+
+const agregarPaciente = async ( req, res ) => {
+
+  const paciente = new Paciente( req.body );
+  paciente.veterinario = req.veterinario._id
+
+  try {
+    const pacienteAlmacenado = await paciente.save();
+    res.json(pacienteAlmacenado);
+    console.log(paciente);
+  } catch (error) {
+    const e = new Error('Hubo un error al crear el paciente.');
+    res.status(404).json({msg: e.message});
+  }
+};
+
+const obtenerPaciente = ( req, res ) => {
+
+};
+
+export {
+  agregarPaciente,
+  obtenerPaciente,
+}
