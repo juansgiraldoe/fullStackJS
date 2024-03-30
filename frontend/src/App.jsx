@@ -14,7 +14,7 @@ function App() {
             <Route index element={<Login />}/>
             <Route path="registrar" element={<Registrar />}/>
             <Route path="confirmar/:id" element={<Confirmar />}/>
-            <Route path="oñvide-pasword" element={<Recuperar />}/>
+            <Route path="olvide-password" element={<Recuperar />}/>
           </Route>
         </Routes>
       </BrowserRouter>
