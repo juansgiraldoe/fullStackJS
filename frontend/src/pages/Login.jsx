@@ -5,45 +5,48 @@ const Login = () => {
   return (
     <>
       <div className="flex flex-col justify-center">
+        <div className="flex w-full justify-center">
+          <img src={dog} alt="" className="h-10 md:h-20 lg:h-24 -rotate-12 -mr-1 md:-mr-3"/>
+          <img src={cat} alt="" className="h-10 md:h-20 lg:h-24 rotate-12 -ml-1 md:-ml-3"/>
+        </div>
         <h1 className="text-black font-bold 2xl:text-6xl lg:text-5xl sm:text-4xl text-2xl text-center">
           Inicia sesión y administra tus<span className="text-indigo-600"> pacientes. </span>
-          <div className="inline-block md:h-10"><img src={dog} alt="" className="h-5 md:h-14"/></div><div className="inline-block md:h-10"><img src={cat} alt="" className="h-5 md:h-14"/></div>
         </h1>
       </div>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center border rounded-lg p-5 bg-white shadow-lg">
         <form action=""
           className="flex flex-col"
         >
           <div className="mb-5">
             <label 
-              htmlFor=""
-              className="uppercase text-gray-600 block text-xl font-bold"
+              htmlFor="email"
+              className="text-gray-600 block text-xl font-bold"
             >
-            <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-base font-bold">
+            <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-base font-bold">
               Email
             </span>
             </label>
             <input type="email"
               name=""
-              id=""
+              id="email"
               placeholder="Email de registro."
-              className="border w-full p-3 mt-3 bg-gray-50 rounded-xl"
+              className="border w-full p-3 mt-3 bg-gray-50 rounded-xl focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 focus:outline-none"
             />
           </div>
           <div className="mb-5">
             <label 
-              htmlFor=""
-              className="uppercase text-gray-600"
+              htmlFor="password"
+              className="text-gray-600"
             >
-            <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-base font-bold">
-              Password
+            <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-base font-bold">
+              Contraseña
             </span>
             </label>
             <input type="password"
               name=""
-              id=""
+              id="password"
               placeholder="Contraseña."
-              className="border w-full p-3 mt-3 bg-gray-50 rounded-xl"
+              className="border w-full p-3 mt-3 bg-gray-50 rounded-xl focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 focus:outline-none"
             />
           </div>
           <div className="flex md:justify-between items-center flex-col-reverse md:flex-row">
@@ -56,7 +59,7 @@ const Login = () => {
             <input
               type="submit"
               value="Iniciar sesion"
-              className="md:w-auto md:px-7 uppercase bg-indigo-600 w-full py-3 rounded-xl text-white uppercasse font-bold hover:cursor-pointer hover:bg-indigo-700 transition delay-100 duration-300 text-xs mb-5 md:mb-0"
+              className="md:w-auto md:px-6 bg-indigo-600 w-full py-3 rounded-xl text-white uppercasse font-bold hover:cursor-pointer hover:bg-indigo-800 transition delay-100 duration-200 text-sm mb-5 md:mb-0"
             />
           </div>
         </form>
