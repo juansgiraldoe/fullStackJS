@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import dog from '../img/dog.png'
 import cat from '../img/cat.png'
+
 const Login = () => {
   return (
     <>
@@ -52,13 +53,13 @@ const Login = () => {
           <div className="flex md:justify-between items-center flex-col-reverse md:flex-row">
             <Link
             className="text-xs hover:text-indigo-600 hover:font-medium text-gray-500 block md:inline text-center"
-            to="/registrar">¿No tienes una cuenta? Registrate</Link>
+            to="/registrar">Crear una cuenta</Link>
             <Link
             className="text-xs hover:text-indigo-600 hover:font-medium text-gray-500 block md:inline text-center"
             to="/olvide-password">Olvide la contraseña</Link>
             <input
               type="submit"
-              value="Iniciar sesion"
+              value="Iniciar sesión"
               className="md:w-auto md:px-6 bg-indigo-600 w-full py-3 rounded-xl text-white uppercasse font-bold hover:cursor-pointer hover:bg-indigo-800 transition delay-100 duration-200 text-sm mb-5 md:mb-0"
             />
           </div>
