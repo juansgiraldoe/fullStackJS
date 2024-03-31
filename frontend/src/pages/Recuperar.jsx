@@ -11,7 +11,7 @@ const Recuperar = () => {
           <img src={cat} alt="" className="h-10 md:h-20 lg:h-24 rotate-12 -ml-3"/>
         </div>
         <h1 className="text-black font-bold 2xl:text-6xl lg:text-5xl sm:text-4xl text-2xl text-center animate-fade-in-y-slower">
-          Crea tu cuenta y administra tus<span className="text-indigo-600"> pacientes. </span>
+          Recupera tu cuenta y administra tus<span className="text-indigo-600"> pacientes. </span>
         </h1>
       </div>
       <div className="flex flex-col justify-center border rounded-lg p-5 bg-white shadow-lg">
