@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios"
 import Alerta from "../components/Alerta";
 import dog from '../img/dog.png'
 import cat from '../img/cat.png'
@@ -12,7 +13,7 @@ const Registrar = () => {
   const [ repetirPassword, setRepetirPassword ] = useState('');
   const [ alerta, setAlerta ] = useState({});
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const datosForm = [nombre, email, password, repetirPassword];
 
@@ -35,6 +36,29 @@ const Registrar = () => {
     setAlerta({});
 
     //Crear el usuario.
+    try {
+      const url = `http://localhost:4000/api/veterinarios`
+      await axios.post(url, { nombre, email, password });
+
+      //Mostrar alerta en DOM.
+      setAlerta({
+        msg: 'Creado correctamente, revisa tu email.',
+      });
+
+      //Reset formulario.
+      setNombre('');
+      setEmail('');
+      setPassword('');
+      setRepetirPassword('');
+
+    } catch (error) {
+      setAlerta({
+        msg: error.response.data.msg,
+        error: true,
+      });
+    }
+
+
   };
 
   const { msg } = alerta
