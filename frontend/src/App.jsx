@@ -6,7 +6,6 @@ import Confirmar from "./pages/Confirmar";
 import Recuperar from "./pages/Recuperar";
 
 function App() {
-
   return (
       <BrowserRouter>
         <Routes>
