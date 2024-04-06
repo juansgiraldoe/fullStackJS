@@ -13,7 +13,7 @@ app.use(express.json());
 dotenv.config();
 conectDb();
 
-const dominiosPermitidos = ['http://localhost:5173'];
+const dominiosPermitidos = [process.env.FRONTEND_URL];
 const coreOptions = {
   origin: function (origin, callback) {
     if(dominiosPermitidos.indexOf(origin) !== -1){
