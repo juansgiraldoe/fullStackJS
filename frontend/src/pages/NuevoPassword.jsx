@@ -10,7 +10,8 @@ const NuevoPassword = () => {
   const [ alerta, setAlerta ] = useState({});
   const [ password, setPassword ] = useState('');
   const [ repetirPassword, setRepetirPassword ] = useState('');
-  const [tokenValido, setTokenValido] = useState(false)
+  const [tokenValido, setTokenValido] = useState(false);
+  const [passwordModificado, setPasswordModificado] = useState(false);
 
   const params = useParams()
   const { token } = params;
@@ -30,6 +31,37 @@ const NuevoPassword = () => {
     };
     comprobarToken();
   }, []);
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    if (password.length < 6) {
+      setAlerta({
+        msg: `La contraseña es muy corta, agrega minimo 6 caracteres.`,
+        error: true,
+      });
+      return;
+    };
+
+    if (password !== repetirPassword) {
+      setAlerta({msg: 'Las contraseñas no coinciden.', error: true});
+      return;
+    };
+
+    try {
+      const url = `${import.meta.env.VITE_BACKEND_URL}/api/veterinarios/recuperar-pasword/${token}`
+      const { data } = await axios.post(url, { password });
+      console.log(data);
+      setAlerta({
+        msg: data.msg
+      });
+      setPasswordModificado(true)
+      setPassword('')
+      setRepetirPassword('')
+    } catch (error) {
+      setAlerta({msg: error.response.data.msg, error: true})
+    };
+  };
   
   const { msg } = alerta;
   return (
@@ -48,7 +80,10 @@ const NuevoPassword = () => {
             alerta={alerta}
         />}
         {tokenValido && (
-        <form action="">
+        <form
+        action=""
+        onSubmit={handleSubmit}
+        >
         <div className="mb-5">
           <input type="password"
             name=""
@@ -68,18 +103,18 @@ const NuevoPassword = () => {
             onChange={ e => setRepetirPassword(e.target.value)}
           />
           </div>
-          <div className="flex md:justify-between items-center flex-col-reverse md:flex-row">
-            <Link
-            className="text-xs hover:text-indigo-600 hover:font-medium text-gray-500 block md:inline text-center"
-            to="/">¿Tienes una cuenta? Inicia sesión.</Link>
-            <Link
-            className="text-xs hover:text-indigo-600 hover:font-medium text-gray-500 block md:inline text-center"
-            to="/olvide-password">Olvide la contraseña</Link>
-            <input
-              type="submit"
-              value="Restablecer"
-              className="md:w-auto md:px-6 bg-indigo-600 w-full py-3 rounded-xl text-white uppercasse font-bold hover:cursor-pointer hover:bg-indigo-800 transition delay-100 duration-200 text-sm mb-5 md:mb-0"
-            />
+          <div className="flex md:justify-center md:flex-row">
+          {passwordModificado ? (
+            <a href="/" className="md:w-full md:px-6 border-2 border-indigo-600 hover:bg-indigo-600 w-full py-3 rounded-xl text-indigo-600 hover:text-white uppercasse font-bold hover:cursor-pointer transition delay-100 duration-200 text-sm mb-5 md:mb-0 text-center">
+              Iniciar Sesión
+            </a>
+          ) : (
+          <input
+            type="submit"
+            value="Restablecer"
+            className="md:w-full md:px-6 bg-indigo-600 w-full py-3 rounded-xl text-white uppercasse font-bold hover:cursor-pointer hover:bg-indigo-800 transition delay-100 duration-200 text-sm mb-5 md:mb-0"
+          />
+      )}
           </div>
         </form>
         )}
